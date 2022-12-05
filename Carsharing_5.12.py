@@ -31,8 +31,8 @@ genre = st.radio(
 if genre in driver_dictionary["Destination"]:
         st.write("Driver available for selected destination.")
 
-else genre in driver_dictionary["Destination"]:
-        st.write("No driver available for selected destination.")
+else:
+    st.write("No driver available for selected destination.")
         
         
         
