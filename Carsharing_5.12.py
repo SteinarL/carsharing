@@ -6,7 +6,7 @@ st.markdown(original_title, unsafe_allow_html=True)
 driver_dictionary = {
         "Departure": "Santos",
         "Destination": "Nova SBE",
-        "Departure_Time": "4 PM",
+        "Departure_Time": ["4 PM", "8 PM"],
         "Free_capacity": 4,
         "Passengers": [],
         "Full": False
