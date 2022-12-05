@@ -18,21 +18,21 @@ with tab_passengers:
           }
 
         # SELECTION OF DEPARTURE TIME
-        genre = st.radio(
+        passenger_dept_time = st.radio(
             "When would you need a ride?",
             ("8 AM", "9 AM", "10 AM", "11 AM", "12 PM", "4 PM", "8 PM"))
 
-        if genre in driver_dictionary["Departure_Time"]:
+        if passenger_dept_time in driver_dictionary["Departure_Time"]:
             st.write("Slot secured.") 
 
         else: 
             st.write("No drivers available.")
 
         # SELECTION OF DESTINATION
-        genre = st.radio(
+        passenger_destination = st.radio(
                 "What is your destination?",
                 ("Nova SBE", "Santos"))
-        if genre in driver_dictionary["Destination"]:
+        if passenger_destination in driver_dictionary["Destination"]:
                 st.write("Driver available for selected destination.")
 
         else:
@@ -45,5 +45,8 @@ with tab_drivers:
             "When are you driving?",
             ("8 AM", "9 AM", "10 AM", "11 AM", "12 PM", "4 PM", "8 PM"))
 
-        if driver_time not in driver_dictionary:
-            driver_dictionary["Departure_Time"].append("driver_time")
+        if driver_time in driver_dictionary["Destination"]:
+                st.write("Driver available for selected destination.")
+
+        else:
+            st.write("No driver available for selected destination.")
