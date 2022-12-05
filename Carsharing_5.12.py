@@ -7,7 +7,7 @@ tabs = st.tabs(["Passengers", "Drivers"])
 
 tab_passengers = tabs[0]
 with tab_passengers:
-#I indented everything so have it inside a tab. Then we can have one tab for passengeres and one for drivers
+# I indented everything so have it inside a tab. Then we can have one tab for passengeres and one for drivers
         driver_dictionary = {
                 "Departure": "Santos",
                 "Destination": "Nova SBE",
@@ -37,6 +37,13 @@ with tab_passengers:
 
         else:
             st.write("No driver available for selected destination.")
+
 tab_drivers = tabs[1]
 with tab_drivers:
-        st.write("Drivers tab test")
+        # selection of driver availability
+        driver_time = st.radio(
+            "When are you driving?",
+            ("8 AM", "9 AM", "10 AM", "11 AM", "12 PM", "4 PM", "8 PM"))
+
+        if driver_time not in driver_dictionary:
+            driver_dictionary["Departure_Time"].append("driver_time")
