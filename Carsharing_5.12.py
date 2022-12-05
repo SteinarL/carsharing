@@ -27,12 +27,12 @@ else:
 # SELECTION OF DESTINATION
 genre = st.radio(
         "What is your destination?",
-        ("Nova SBE", "Santos")
+        ("Nova SBE", "Santos"))
 if genre in driver_dictionary["Destination"]:
-        st.write("Driver available for selected Destination")
+        st.write("Driver available for selected destination.")
 
 else genre in driver_dictionary["Destination"]:
-        st.write("No driver available for selected Destination")
+        st.write("No driver available for selected destination.")
         
         
         
