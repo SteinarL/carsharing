@@ -7,6 +7,7 @@ tabs = st.tabs(["Passengers", "Drivers"])
 
 tab_passengers = tabs[0]
 with tab_passengers:
+#I indented everything so have it inside a tab. Then we can have one tab for passengeres and one for drivers
         driver_dictionary = {
                 "Departure": "Santos",
                 "Destination": "Nova SBE",
