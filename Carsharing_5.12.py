@@ -37,12 +37,4 @@ with tab_passengers:
         else:
             st.write("No driver available for selected destination.")
 tab_drivers = tabs[1]
-with tab_drivers:        
-        
-
-
-
-
-
-
-        
+with tab_drivers:
