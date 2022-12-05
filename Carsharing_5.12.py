@@ -40,7 +40,9 @@ with tab_passengers:
 
 tab_drivers = tabs[1]
 with tab_drivers:
-        # selection of driver availability
+        # Selection of driver availability
+        # Just a copy form above. Hasn't been adapted to drivers yet. 
+                # Trying to figure out how to append new times to dictionary when driver selects departure time. 
         driver_time = st.radio(
             "When are you driving?",
             ("8 AM", "9 AM", "10 AM", "11 AM", "12 PM", "4 PM", "8 PM"))
