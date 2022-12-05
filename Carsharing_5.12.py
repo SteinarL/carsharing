@@ -18,7 +18,8 @@ tabs = st.tabs(["Passengers", "Drivers"])
 tab_passengers = tabs[0]
 with tab_passengers:
         
-        with st.form(key='my_form'):
+        with st.form(key='my_form'): # <-- Everything is in a form to have a submission button. The button doesn't really do anything for now 
+                                        # but could perhaps be used for sending a signal to check inputs with driver availability.
                 
                 st.write("Please select the wished time of departure and your destination.")
                 # SELECTION OF DEPARTURE TIME
