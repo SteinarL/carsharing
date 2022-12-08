@@ -15,7 +15,9 @@ drivers_open = True
 #4: Add the [] to the dictionary as Key, and add the inputs as values:
 while drivers_open:
 
+tab1, tab2 = st.tabs(["Drivers", "Passengers"])
 
+with tab1:
      
     #4: Add the [] to the dictionary as Key, and add the inputs as values:
     drivers_input['Name'] = st.text_input("Please enter your name:")
