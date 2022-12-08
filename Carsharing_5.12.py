@@ -48,6 +48,8 @@ drivers_input.clear()
 
 #PASSENGERS 
 with tab2:
-              requests_input['Departure_P'] = st.selectbox("From where do you want to leave?", ("Santos", "Nova SBE"))
- #             requests_input['Arrival_P'] = input("Where do you want to go?")
-  #            requests_input['Departure_time_P'] = input("At what time will you want to leave? (e.g. 8AM)")
+     with st.form(key="my_form"):
+             requests_input['Departure_P'] = st.selectbox("From where do you want to leave?", ("Santos", "Nova SBE"))
+             correct_input = st.form_submit_button(label="Publish request")
+             if correct_input: 
+                   drivers_open = False
