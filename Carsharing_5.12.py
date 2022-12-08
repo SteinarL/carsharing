@@ -4,7 +4,7 @@ import pandas as pd
 
 #1: Create a new bridging dictionary:
 drivers_input = {}
-drivers_list = {}
+drivers_list = []
 
 #2: Loop or inputs will continue to run as long as it changes to False:
 drivers_open = True
