@@ -45,3 +45,8 @@ drivers_list.append(drivers_input.copy())
 #7: And can clear the drivers_input dictionary for a new entry. 
 drivers_input.clear()
 
+
+#PASSENGERS 
+              requests_input['Departure_P'] = st.selectbox("From where do you want to leave?", ("Santos", "Nova SBE"))
+ #             requests_input['Arrival_P'] = input("Where do you want to go?")
+  #            requests_input['Departure_time_P'] = input("At what time will you want to leave? (e.g. 8AM)")
