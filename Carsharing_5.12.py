@@ -1,52 +1,49 @@
 import streamlit as st
-import numpy as np
 import pandas as pd
+import numpy as np
 
-#1: Create a new bridging dictionary:
-drivers_input = {}
-drivers_list = []
+tabs = st.tabs(["Drivers", "Passengers"])
 
-#2: Loop or inputs will continue to run as long as it changes to False:
-drivers_open = True
+tab_drivers = tabs[0]
+with tab_drivers:
 
-#3: While True it will:
-#4: Add the [] to the dictionary as Key, and add the inputs as values:
-while drivers_open:
+    st.title("Fill out details for your ride")
 
-     tab1, tab2 = st.tabs(["Drivers", "Passengers"])
+    df = pd.read_csv("desktop/Car_sharing_local/Drivers.csv")
+    with st.form("my_form"):
+                          #4: Add the [] to the dictionary as Key, and add the inputs as values:
+        driver_name = st.text_input("Please enter your name:")
+        driver_departure = st.selectbox("From where do you want to leave?", ("Santos", "Nova SBE"))
+        driver_arrival = st.selectbox("Where do you want to go?", ("Nova SBE", "Santos"))
+        driver_time = st.selectbox("At what time will you leave?", ("8 AM", "12 PM", "4 PM", "8 PM"))
+        driver_cap = st.number_input("How many free spots do you have?", min_value=1, step=1)
 
-     with tab1:
-        with st.form(key="my_form"):
+        #5: Ask if all entered data was correct. If yes, we end the loop and inputs are added to drivers_input dictionary:
+                  
+        correct_input = st.form_submit_button(label="Publish ride")
+        if correct_input:
+            st.write("Your ride has been published and you will be notified if someone requests a seat.")
+            new_data = {"Name": driver_name, "Departure": driver_departure, "Arrival": driver_arrival, "Time": driver_time, "Capacity": driver_cap}
+            df = df.append(new_data, ignore_index=True)
+            df.to_csv("desktop/Car_sharing_local/Drivers.csv", index=False)
 
-              #4: Add the [] to the dictionary as Key, and add the inputs as values:
-              drivers_input['Name'] = st.text_input("Please enter your name:")
-              drivers_input['Departure'] = st.selectbox("From where do you want to leave?", ("Santos", "Nova SBE"))
-              drivers_input['Arrival'] = st.selectbox("Where do you want to go?", ("Nova SBE", "Santos"))
-              drivers_input['Departure_time'] = st.selectbox("At what time will you leave?", ("8 AM", "12 PM", "4 PM", "8 PM"))
-              drivers_input['Free_capacity'] = st.number_input("How many free spots do you have?", min_value=1, max_value=10, step=1)
+tab_passengers = tabs[1]
+with tab_passengers:
 
-    #5: Ask if all entered data was correct. If yes, we end the loop and inputs are added to drivers_input dictionary:
-              
-              correct_input = st.form_submit_button(label="Publish ride")
-              if correct_input: 
-                    drivers_open = False
-#
-    
-#5: Ask if all entered data was correct. If yes, we end the loop and inputs are added to drivers_input dictionary:
-    #correct_input = st.button("Do you want to save and publish this ride?")
-    #if correct_input:
-        #drivers_open = False
+    st.title("When and where do you want to go?")
 
+    df = pd.read_csv("desktop/Car_sharing_local/Passengers.csv")
+    with st.form("my_form2"):
+                          #4: Add the [] to the dictionary as Key, and add the inputs as values:
+        passenger_departure = st.selectbox("From where do you want to leave?", ("Santos", "Nova SBE"))
+        passenger_arrival = st.selectbox("Where do you want to go?", ("Nova SBE", "Santos"))
+        passenger_time = st.selectbox("At what time will you leave?", ("8 AM", "12 PM", "4 PM", "8 PM"))
 
-#6: Now, we append the drivers_input dictionary to the drivers_list:
-drivers_input_copy = drivers_input.copy()
-drivers_list.append(drivers_input.copy())
-
-#7: And can clear the drivers_input dictionary for a new entry. 
-drivers_input.clear()
-
-
-#PASSENGERS 
-with tab2:
-       requests_input['Departure_P'] = st.selectbox("From where do you want to leave?", ("Santos", "Nova SBE"))
-
+        #5: Ask if all entered data was correct. If yes, we end the loop and inputs are added to drivers_input dictionary:
+                  
+        correct_input = st.form_submit_button(label="Request ride")
+        if correct_input:
+            st.write("Thank you! Your ride has been confirmed.")
+            new_data = {"Departure": passenger_departure, "Arrival": passenger_arrival, "Time": passenger_time}
+            df = df.append(new_data, ignore_index=True)
+            df.to_csv("desktop/Car_sharing_local/Passengers.csv", index=False)
