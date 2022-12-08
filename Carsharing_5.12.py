@@ -1,62 +1,60 @@
 import streamlit as st
+import numpy as np
+import pandas as pd
 
-original_title = '<p style="font-family:Helvetica; color:#458B74; font-size: 30px;">Welcome to the NOVA rideshare platform!</p>'
-st.markdown(original_title, unsafe_allow_html=True)
+#1: Create a new bridging dictionary:
+drivers_input = {}
+drivers_list = {}
 
-driver_dictionary = {
+#2: Loop or inputs will continue to run as long as it changes to False:
+drivers_open = True
+
+#3: While True it will:
+#4: Add the [] to the dictionary as Key, and add the inputs as values:
+while drivers_open:
+
+    with st.form(key="my_form"):
+#4: Add the [] to the dictionary as Key, and add the inputs as values:
+        drivers_input['Name'] = st.text_input("Please enter your name:", key=1)
+        drivers_input['Departure'] = st.selectbox("From where do you want to leave?", ("Santos", "Nova SBE"))
+        drivers_input['Arrival'] = st.selectbox("Where do you want to go?", ("Nova SBE", "Santos"))
+        drivers_input['Departure_time'] = st.selectbox("At what time will you leave?", ("8 AM", "12 PM", "4 PM", "8 PM"))
+        drivers_input['Free_capacity'] = st.number_input("How many free spots do you have?", min_value=1, max_value=10, step=1)
+
+#5: Ask if all entered data was correct. If yes, we end the loop and inputs are added to drivers_input dictionary:
+        correct_input = st.form_submit_button(label="Publish ride")
+        if correct_input: 
+            drivers_open = False
+    
+#5: Ask if all entered data was correct. If yes, we end the loop and inputs are added to drivers_input dictionary:
+    #correct_input = st.button("Do you want to save and publish this ride?")
+    #if correct_input:
+        #drivers_open = False
+
+
+#6: Now, we append the drivers_input dictionary to the drivers_list:
+drivers_input_copy = drivers_input.copy()
+drivers_list.append(drivers_input.copy())
+
+#7: And can clear the drivers_input dictionary for a new entry. 
+drivers_input.clear()
+
+drivers_list = [
+    {
+        "Name" : "Max",
         "Departure": "Santos",
-        "Destination": "Nova SBE",
-        "Departure_Time": ["4 PM", "8 PM"],
+        "Arrival": "Nova_SBE",
+        "Departure_time": "8AM",
+        "Free_capacity": 0,
+        "Passengers": [],
+    },
+    {
+        "Name" : "Paul",
+        "Departure": "Santos",
+        "Arrival": "Nova_SBE",
+        "Departure_time": "10AM",
         "Free_capacity": 4,
         "Passengers": [],
-        "Full": False
-        }
+    }
+]
 
-
-tabs = st.tabs(["Passengers", "Drivers"])
-
-tab_passengers = tabs[0]
-with tab_passengers:
-        
-        with st.form(key='my_form'): # <-- Everything is in a form to have a submission button. The button doesn't really do anything for now 
-                                        # but could perhaps be used for sending a signal to check inputs with driver availability.
-                                        # update on button: it blocks the if-statement tha should show "Slot secured" for 4 PM and 8 PM....
-                
-                st.write("Please select the wished time of departure and your destination.")
-                # SELECTION OF DEPARTURE TIME
-                passenger_dept_time = st.radio(
-                    "When would you need a ride?",
-                    ("8 AM", "9 AM", "10 AM", "11 AM", "12 PM", "4 PM", "8 PM"))
-
-                if passenger_dept_time in driver_dictionary["Departure_Time"]:
-                    st.write("Slot secured.") 
-                else: 
-                    st.write("No drivers available.")
-
-                # SELECTION OF DESTINATION
-                passenger_destination = st.radio(
-                        "What is your destination?",
-                        ("Nova SBE", "Santos"))
-                if passenger_destination in driver_dictionary["Destination"]:
-                        st.write("Driver available for selected destination.")
-                else:
-                    st.write("No driver available for selected destination.")
-
-                submit_button = st.form_submit_button(label='Submit your need')
-                if submit_button:
-                        st.write("Your need has been submitted.")
-                
-tab_drivers = tabs[1]
-with tab_drivers:
-        # SELECTION OF DRIVER AVAILABILITY
-        # Just a copy form above. Hasn't been adapted to drivers yet. 
-                # Trying to figure out how to append new times to dictionary when driver selects departure time. 
-        driver_time = st.radio(
-            "When are you driving?",
-            ("8 AM", "9 AM", "10 AM", "11 AM", "12 PM", "4 PM", "8 PM"))
-
-        if driver_time in driver_dictionary["Destination"]:
-                st.write("Driver available for selected destination.")
-
-        else:
-            st.write("No driver available for selected destination.")
