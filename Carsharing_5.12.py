@@ -45,22 +45,3 @@ drivers_list.append(drivers_input.copy())
 #7: And can clear the drivers_input dictionary for a new entry. 
 drivers_input.clear()
 
-drivers_list = [
-    {
-        "Name" : "Max",
-        "Departure": "Santos",
-        "Arrival": "Nova_SBE",
-        "Departure_time": "8AM",
-        "Free_capacity": 0,
-        "Passengers": [],
-    },
-    {
-        "Name" : "Paul",
-        "Departure": "Santos",
-        "Arrival": "Nova_SBE",
-        "Departure_time": "10AM",
-        "Free_capacity": 4,
-        "Passengers": [],
-    }
-]
-
