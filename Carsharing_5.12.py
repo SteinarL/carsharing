@@ -14,9 +14,9 @@ drivers_open = True
 while drivers_open:
 
 # Setting up the tabs
-tabs = st.tabs(["Drivers", "Passengers"])
+        tabs = st.tabs(["Drivers", "Passengers"])
 
-tab_drivers = tabs[0]
+        tab_drivers = tabs[0]
 
         with st.form(key="my_form"):
     #4: Add the [] to the dictionary as Key, and add the inputs as values:
