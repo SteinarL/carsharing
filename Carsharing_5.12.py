@@ -47,6 +47,6 @@ drivers_input.clear()
 
 
 #PASSENGERS 
-with tab2:
-        requests_input['Departure_P'] = st.selectbox("From where do you want to leave?", ("Santos", "Nova SBE"))
-           
+     with tab2:
+            requests_input['Departure_P'] = st.selectbox("From where do you want to leave?", ("Santos", "Nova SBE"))
+
