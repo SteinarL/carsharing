@@ -28,4 +28,5 @@ while drivers_open:
 
     #5: Ask if all entered data was correct. If yes, we end the loop and inputs are added to drivers_input dictionary:
             correct_input = st.form_submit_button(label="Publish ride")
-                if correct_unput:
+            if correct_input:
+                st.write("Ride is submitted")
