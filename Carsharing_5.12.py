@@ -28,18 +28,3 @@ while drivers_open:
 
     #5: Ask if all entered data was correct. If yes, we end the loop and inputs are added to drivers_input dictionary:
             correct_input = st.form_submit_button(label="Publish ride")
-            if correct_input: 
-                drivers_open = False
-    
-#5: Ask if all entered data was correct. If yes, we end the loop and inputs are added to drivers_input dictionary:
-    #correct_input = st.button("Do you want to save and publish this ride?")
-    #if correct_input:
-        #drivers_open = False
-
-
-#6: Now, we append the drivers_input dictionary to the drivers_list:
-drivers_input_copy = drivers_input.copy()
-drivers_list.append(drivers_input.copy())
-
-#7: And can clear the drivers_input dictionary for a new entry. 
-drivers_input.clear()
