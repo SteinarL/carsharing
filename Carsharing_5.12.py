@@ -9,7 +9,7 @@ tabs = st.tabs(["Drivers", "Passengers"])
 tab_drivers = tabs[0]
 with tab_drivers:
 
-    st.title("Fill out details for your ride")
+    st.header("Fill out details for your ride")
     with st.form("my_form"):
                           #4: Add the [] to the dictionary as Key, and add the inputs as values:
         driver_name = st.text_input("Please enter your name:")
@@ -27,7 +27,7 @@ with tab_drivers:
 tab_passengers = tabs[1]
 with tab_passengers:
 
-    st.title("When and where do you want to go?")
+    st.header("When and where do you want to go?")
 
     with st.form("my_form2"):
                           #4: Add the [] to the dictionary as Key, and add the inputs as values:
