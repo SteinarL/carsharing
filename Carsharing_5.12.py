@@ -8,8 +8,6 @@ tab_drivers = tabs[0]
 with tab_drivers:
 
     st.title("Fill out details for your ride")
-
-    df = pd.read_csv("desktop/Car_sharing_local/Drivers.csv")
     with st.form("my_form"):
                           #4: Add the [] to the dictionary as Key, and add the inputs as values:
         driver_name = st.text_input("Please enter your name:")
@@ -23,16 +21,12 @@ with tab_drivers:
         correct_input = st.form_submit_button(label="Publish ride")
         if correct_input:
             st.write("Your ride has been published and you will be notified if someone requests a seat.")
-            new_data = {"Name": driver_name, "Departure": driver_departure, "Arrival": driver_arrival, "Time": driver_time, "Capacity": driver_cap}
-            df = df.append(new_data, ignore_index=True)
-            df.to_csv("desktop/Car_sharing_local/Drivers.csv", index=False)
 
 tab_passengers = tabs[1]
 with tab_passengers:
 
     st.title("When and where do you want to go?")
 
-    df = pd.read_csv("desktop/Car_sharing_local/Passengers.csv")
     with st.form("my_form2"):
                           #4: Add the [] to the dictionary as Key, and add the inputs as values:
         passenger_departure = st.selectbox("From where do you want to leave?", ("Santos", "Nova SBE"))
@@ -44,6 +38,3 @@ with tab_passengers:
         correct_input = st.form_submit_button(label="Request ride")
         if correct_input:
             st.write("Thank you! Your ride has been confirmed.")
-            new_data = {"Departure": passenger_departure, "Arrival": passenger_arrival, "Time": passenger_time}
-            df = df.append(new_data, ignore_index=True)
-            df.to_csv("desktop/Car_sharing_local/Passengers.csv", index=False)
