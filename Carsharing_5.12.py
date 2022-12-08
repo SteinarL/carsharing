@@ -39,4 +39,4 @@ with tab_passengers:
                   
         correct_input = st.form_submit_button(label="Request ride")
         if correct_input:
-            st.write("Thank you! Your ride has been confirmed.")
+            st.write("Your ride has been requested.")
