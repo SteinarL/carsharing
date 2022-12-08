@@ -3,18 +3,6 @@ import numpy as np
 import pandas as pd
 
 
-
-#1: Create a new bridging dictionary:
-drivers_input = {}
-drivers_list = []
-
-#2: Loop or inputs will continue to run as long as it changes to False:
-drivers_open = True
-
-#3: While True it will:
-#4: Add the [] to the dictionary as Key, and add the inputs as values:
-while drivers_open:
-
 tab1, tab2 = st.tabs(["Drivers", "Passengers"])
 
 with tab1:
